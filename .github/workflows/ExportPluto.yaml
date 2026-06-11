@@ -59,7 +59,11 @@ jobs:
                     Export_cache_dir="pluto_state_cache",
                     Export_baked_notebookfile=false,
                     Export_baked_state=false,
-                    # more parameters can go here
+                    # Custom Binder environment with our solver packages
+                    # pre-baked into the image (otherwise every Binder
+                    # session spends 10+ min installing InfiniteOpt/Ipopt
+                    # before the first cell runs, which reads as a hang):
+                    Export_binder_url="https://mybinder.org/v2/gh/jeremydwong/pluto-on-binder/opt-control-1",
                   )'
 
 
