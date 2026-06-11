@@ -19,10 +19,12 @@ notebooks and published automatically to GitHub Pages.
 3. **Landing on Mars in 3-DoF** — the full Blackmore 2013 powered-descent
    problem: mass depletion via the log-mass trick, glide-slope cones, and
    an interactive landing you can fly with sliders.
-4. *(planned)* Free final time — wrapping a line search around a convex solver.
-5. *(planned)* When discretization lies — a transcription-diagnostics post-mortem.
-6. *(planned)* Six degrees of freedom — attitude, gimbal cones, and
-   successive convexification with trust regions.
+4. **Six Degrees of Freedom: When Convexity Runs Out** — attitude dynamics
+   are bilinear and no lossless lift exists, so convex optimization becomes
+   the inner loop of successive convexification; includes an iteration
+   explorer and a debugging confession.
+5. *(planned)* Free final time — wrapping a line search around a convex solver.
+6. *(planned)* When discretization lies — a transcription-diagnostics post-mortem.
 
 ## How it works
 

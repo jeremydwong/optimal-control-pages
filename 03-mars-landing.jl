@@ -488,7 +488,8 @@ The paper's reference $t_f = 72$ s burns about **23% more fuel** than the
 best flight time near 49 s. Choosing $t_f$ *is itself an optimization* — but
 the convex machinery above only works for *fixed* $t_f$. The resolution
 (an outer line search wrapped around the convex solver — bisection's smarter
-sibling, exactly the trick from page 1's minimum-time search) is **Part 4**.
+sibling, exactly the trick from page 1's minimum-time search) gets its own
+page later in the series.
 
 ## Take-home
 
@@ -500,10 +501,10 @@ sibling, exactly the trick from page 1's minimum-time search) is **Part 4**.
 - Two independent solution routes (declared NLP vs. hand-transcribed conic
   SCVX) agreeing to ~0.1 kg is worth more than either alone.
 
-*Coming next in the series:* **4. Free final time** (the line search), **5.
-When discretization lies** (a transcription-diagnostics post-mortem), **6.
-Six degrees of freedom** (attitude, gimbal cones, and successive
-convexification with trust regions — the SpaceX-style landing).
+**Next: [Part 4 — Six Degrees of Freedom](04-sixdof-landing.html)**, where
+the rocket becomes a rigid body, the convex spell breaks, and successive
+convexification picks up the pieces. *(Also planned: free final time, and a
+transcription-diagnostics post-mortem.)*
 """
 
 # ╔═╡ Cell order:

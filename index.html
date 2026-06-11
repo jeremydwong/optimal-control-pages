@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thinking in Optimal Control</title>
+<style>
+  :root { color-scheme: dark; }
+  body { background:#0e1117; color:#d8d8d8; font-family: system-ui, -apple-system, sans-serif;
+         max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; line-height: 1.55; }
+  h1 { color:#d4af37; font-size: 2.1em; margin-bottom: 4px; }
+  .sub { color:#8a8a8a; margin-bottom: 36px; }
+  a { color:#4fc3f7; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .card { display:block; background:#161b24; border:1px solid #2a3140; border-radius:12px;
+          padding:18px 22px; margin:14px 0; transition: border-color .15s; }
+  .card:hover { border-color:#d4af37; text-decoration:none; }
+  .card .num { color:#d4af37; font-weight:700; margin-right:10px; }
+  .card .t { color:#eee; font-weight:600; font-size:1.08em; }
+  .card .d { color:#9a9a9a; margin-top:6px; font-size:.95em; }
+  .planned { opacity:.55; border-style:dashed; }
+  .planned .t { color:#bbb; }
+  .foot { margin-top:44px; color:#777; font-size:.9em; border-top:1px solid #2a3140; padding-top:18px; }
+  .note { background:#161b24; border-left:3px solid #d4af37; padding:10px 16px; margin:26px 0;
+          color:#aaa; font-size:.93em; border-radius:0 8px 8px 0; }
+</style>
+</head>
+<body>
+<h1>Thinking in Optimal Control</h1>
+<div class="sub">An interactive essay series — from a falling point mass to a six-degree-of-freedom rocket landing.
+Every page is a runnable <a href="https://plutojl.org">Pluto.jl</a> notebook with real solvers behind it.</div>
+
+<a class="card" href="01-anatomy-of-optimal-control.html">
+  <span class="num">01</span><span class="t">The Anatomy of an Optimal Control Problem</span>
+  <div class="d">Landing a 1-D spacecraft with InfiniteOpt.jl: decision variables, dynamics, boundary
+  conditions, path constraints, an objective — and what happens when the objective can't tell
+  solutions apart.</div>
+</a>
+
+<a class="card" href="02-lossless-convexification.html">
+  <span class="num">02</span><span class="t">Nonconvexity and the Lossless Trick</span>
+  <div class="d">Rocket engines can't throttle to zero, so the feasible set grows a hole. A one-variable
+  lift repairs it — losslessly, under fine print you can check in one line. Find the boundary where the
+  check fails.</div>
+</a>
+
+<a class="card" href="03-mars-landing.html">
+  <span class="num">03</span><span class="t">Landing on Mars in 3-DoF</span>
+  <div class="d">The full Blackmore 2013 powered-descent problem: the log-mass trick, glide-slope
+  cones, two independent solution routes that agree to 0.1 kg — and a landing you can fly with
+  sliders.</div>
+</a>
+
+<a class="card" href="04-sixdof-landing.html">
+  <span class="num">04</span><span class="t">Six Degrees of Freedom: When Convexity Runs Out</span>
+  <div class="d">Attitude dynamics are bilinear and no lossless lift exists — so convex optimization
+  becomes the inner loop of successive convexification. Watch it converge iteration by iteration,
+  plus an honest account of every bug that produced "SCvx doesn't converge."</div>
+</a>
+
+<span class="card planned">
+  <span class="num">05</span><span class="t">Free Final Time</span>
+  <div class="d">Planned — fuel(tf) is a curve worth optimizing: wrapping a line search around the
+  convex solver, and when tf can be a decision variable.</div>
+</span>
+
+<span class="card planned">
+  <span class="num">06</span><span class="t">When Discretization Lies</span>
+  <div class="d">Planned — a transcription-diagnostics post-mortem: the full story of the "2.61 gap"
+  that nearly condemned a perfectly good method.</div>
+</span>
+
+<div class="note">▶ Each page has an <b>Edit or run</b> button (top right) that launches the actual
+notebook on the free <a href="https://mybinder.org">Binder</a> service — boot takes several minutes
+and the public infrastructure has good and bad days; the page itself and its sliders work without it.</div>
+
+<div class="foot">
+Built with Pluto.jl, InfiniteOpt.jl, JuMP, Ipopt and Clarabel · re-solved from scratch by CI on every
+commit · <a href="https://github.com/jeremydwong/optimal-control-pages">site source</a> ·
+<a href="https://github.com/jeremydwong/blackmore-opts">research code</a>
+</div>
+</body>
+</html>
