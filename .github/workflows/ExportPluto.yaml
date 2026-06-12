@@ -63,7 +63,7 @@ jobs:
                     # pre-baked into the image (otherwise every Binder
                     # session spends 10+ min installing InfiniteOpt/Ipopt
                     # before the first cell runs, which reads as a hang):
-                    Export_binder_url="https://mybinder.org/v2/gh/jeremydwong/pluto-on-binder/opt-control-1",
+                    Export_binder_url="https://mybinder.org/v2/gh/jeremydwong/pluto-on-binder/opt-control-2",
                   )'
 
 
