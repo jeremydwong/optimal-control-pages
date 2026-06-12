@@ -28,7 +28,35 @@ Companion research repo: `jeremydwong/blackmore-opts`.
   error types and expected rendered text (beware: the notebook *source* is
   also embedded — check for resolved values, not source strings).
 
+## Adding a new page (the common case — no Binder work)
+
+1. Write `NN-page-name.jl` at the repo root, same pattern as existing
+   notebooks (frontmatter with `order`/`title`, `Markdown.parse` for
+   value-bearing cells, `@htl` widgets for interactivity).
+2. Replace its dashed "planned" card in `index.html` with a real link.
+3. Push. CI runs the notebook and publishes it.
+4. Binder needs touching **only if** the page uses a Julia package outside
+   the baked set (InfiniteOpt, Ipopt, JuMP, Clarabel, Plots,
+   HypertextLiteral, JSON3) — then follow the runbook below.
+
 ## The Binder setup (the "Edit or run" button)
+
+### Plain-English summary
+
+When a reader clicks "Edit or run", Binder rents them a temporary cloud
+computer built from a recipe (the `jeremydwong/pluto-on-binder` repo),
+which Binder bakes once into a frozen disk snapshot and then copies for
+every visitor. Julia translates packages into machine code the first time
+they're used ("precompilation", 10+ min for our solvers on Binder's weak
+machines) — so the recipe does that translation during the one-time bake
+and stores the results in the snapshot. Two gotchas made the first attempt
+useless: Julia only reuses stored translations if the Julia *settings* and
+the *CPU type* at runtime match the ones used while baking — otherwise it
+silently redoes everything live (the "precompiling forever" hang). And
+"mybinder.org" is secretly three independent providers behind one address,
+each with its own snapshot freezer, so a new recipe must be baked at all
+three or some visitors wait ~45 min on a cold one. The details below
+exist to keep those three things true.
 
 Every exported page has a built-in button that runs the notebook on the
 free mybinder.org service. **It points at a custom environment**:
